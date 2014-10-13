@@ -56,31 +56,31 @@ public class Breadth {
 			
 			if (!game.GameOver(temp)) {
 				Grid gridleft = game.GoLeft(temp);
-				game.PrintGrid(gridleft);
+				//game.PrintGrid(gridleft);
 				Grid gridright = game.GoRight(temp2);
-				game.PrintGrid(gridright);
+				//game.PrintGrid(gridright);
 				Grid gridup = game.GoUp(temp3);
-				game.PrintGrid(gridup);
+				//game.PrintGrid(gridup);
 				Grid griddown = game.GoDown(temp4);
-				game.PrintGrid(griddown);
-				System.out.println(gridleft.compareTo(temp));
+				//game.PrintGrid(griddown);
+				//System.out.println(gridleft.compareTo(temp));
 				if (gridleft.compareTo(temp) == 0){
-					System.out.println("11");
+					//System.out.println("11");
 					queue.add(gridleft);
 				}
-				System.out.println(gridright.compareTo(temp2));
+				//System.out.println(gridright.compareTo(temp2));
 				if (gridright.compareTo(temp2) == 0){
-					System.out.println("22");
+					//System.out.println("22");
 					queue.add(gridright);
 				}
-				System.out.println(gridup.compareTo(temp3));
+				//System.out.println(gridup.compareTo(temp3));
 				if (gridup.compareTo(temp3) == 0){
-					System.out.println("33");
+					//System.out.println("33");
 					queue.add(gridup);
 				}
-				System.out.println(griddown.compareTo(temp4));
+				//System.out.println(griddown.compareTo(temp4));
 				if (griddown.compareTo(temp4) == 0){
-					System.out.println("44");
+					//System.out.println("44");
 					queue.add(griddown);
 				}
 			} else {

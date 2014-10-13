@@ -202,9 +202,23 @@ public class twozerofoureight {
 	}
 
 	public Grid GoRight(Grid oldGrid) {
-		int score = oldGrid.getScore();
-		Grid newGrid = new Grid(oldGrid.getGrid(), score);
-		int [][] grid = oldGrid.getGrid();
+
+		int[][] current = oldGrid.getGrid();
+		int[][] old = new int [4][4];
+		for(int i=0; i<old.length; i++)
+			  for(int j=0; j<old[i].length; j++)
+			    old[i][j]=current[i][j];
+		
+		Grid newGrid = new Grid(old, oldGrid.getScore());
+		int score = newGrid.getScore();
+		
+		int[][] old2 = new int [4][4];
+		for(int i=0; i<old2.length; i++)
+			  for(int j=0; j<old2[i].length; j++)
+			    old2[i][j]=current[i][j];
+		
+		int [][] grid = old2;
+		
 		boolean possible = false;
 		for (int i = 0; i < 4; i++) {
 			int[] bool = { 0, 0, 0, 0 };
@@ -252,9 +266,23 @@ public class twozerofoureight {
 	}
 
 	public Grid GoUp(Grid oldGrid) {
-		int score = oldGrid.getScore();
-		Grid newGrid = new Grid(oldGrid.getGrid(), score);
-		int [][] grid = oldGrid.getGrid();
+		
+		int[][] current = oldGrid.getGrid();
+		int[][] old = new int [4][4];
+		for(int i=0; i<old.length; i++)
+			  for(int j=0; j<old[i].length; j++)
+			    old[i][j]=current[i][j];
+		
+		Grid newGrid = new Grid(old, oldGrid.getScore());
+		int score = newGrid.getScore();
+		
+		int[][] old2 = new int [4][4];
+		for(int i=0; i<old2.length; i++)
+			  for(int j=0; j<old2[i].length; j++)
+			    old2[i][j]=current[i][j];
+		
+		int [][] grid = old2;
+		
 		boolean possible = false;
 		for (int i = 0; i < 4; i++) {
 			int[] bool = { 0, 0, 0, 0 };
@@ -302,9 +330,22 @@ public class twozerofoureight {
 
 	public Grid GoDown(Grid oldGrid) {
 		
-		int score = oldGrid.getScore();
-		Grid newGrid = new Grid(oldGrid.getGrid(), score);
-		int [][] grid = oldGrid.getGrid();
+		int[][] current = oldGrid.getGrid();
+		int[][] old = new int [4][4];
+		for(int i=0; i<old.length; i++)
+			  for(int j=0; j<old[i].length; j++)
+			    old[i][j]=current[i][j];
+		
+		Grid newGrid = new Grid(old, oldGrid.getScore());
+		int score = newGrid.getScore();
+		
+		int[][] old2 = new int [4][4];
+		for(int i=0; i<old2.length; i++)
+			  for(int j=0; j<old2[i].length; j++)
+			    old2[i][j]=current[i][j];
+		
+		int [][] grid = old2;
+		
 		boolean possible = false;
 		for (int i = 0; i < 4; i++) {
 			int[] bool = { 0, 0, 0, 0 };

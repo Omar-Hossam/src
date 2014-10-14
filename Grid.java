@@ -2,6 +2,27 @@
 public class Grid implements Comparable {
 	private int [][] grid;
 	private int score;
+	private int cost = 0;
+	private int heuristic = 0;
+
+	public int getHeuristic() {
+		return heuristic;
+	}
+
+
+	public void setHeuristic(int heuristic) {
+		this.heuristic = heuristic;
+	}
+
+
+	public int getCost() {
+		return cost;
+	}
+
+
+	public void setCost(int cost) {
+		this.cost = cost;
+	}
 
 
 	public Grid(int[][] grid, int score) {
@@ -53,14 +74,5 @@ public class Grid implements Comparable {
 		}
 		return 0;
 			
-	}
-	public static void main(String [] s){
-		twozerofoureight game = new twozerofoureight();
-		twozerofoureight game2 = new twozerofoureight();
-		Grid g = game.GenGrid();
-		Grid g2 = game2.GenGrid();
-		game.PrintGrid(g);
-		game2.PrintGrid(g2);
-		System.out.println(g.compareTo(g2));
 	}
 }

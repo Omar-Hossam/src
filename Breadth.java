@@ -84,7 +84,7 @@ public class Breadth {
 					queue.add(griddown);
 				}
 			} else {
-				game.PrintGrid(temp);
+				//game.PrintGrid(temp);
 			}
 		}
 	}
@@ -93,7 +93,7 @@ public class Breadth {
 		//twozerofoureight game = new twozerofoureight();
 		//Grid temp = game.GenGrid();
 		//game.PrintGrid(game.GoRight(temp));
-		Breadth breadth = new Breadth(16);
+		Breadth breadth = new Breadth(512);
 		Grid winner = breadth.completeTree();
 		breadth.game.PrintGrid(winner);
 	}

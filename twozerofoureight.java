@@ -63,7 +63,7 @@ public class twozerofoureight {
 				}
 			}
 		}
-		System.out.println("Game Over");
+		//System.out.println("Game Over");
 		return true;
 	}
 	public boolean Zeros(int [][]x){

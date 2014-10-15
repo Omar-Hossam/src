@@ -1,9 +1,26 @@
-public class Grid implements Comparable {
+public class Grid extends Node implements Comparable {
 	
-	private int[][] grid;
+//	private int[][] grid;
 	private int score;
-	private int cost = 0;
+//	private int cost = 0;
 	private int heuristic = 0;
+	
+//	public Node(int[][] state, int pathCost, int depth, Node parent, int operation) {
+//		this.pathCost = pathCost;
+//		this.depth = depth;
+//		this.parent = parent;
+//		this.operation = operation;
+//	}
+	
+	public Grid(int[][] state, int pathCost, int depth, Node parent, int operation, int score) {
+		super(state, pathCost, depth, parent, operation);
+		this.score = score;
+	}
+	
+	public Grid(int[][] state) {
+		super(state);
+		this.score = 0;
+	}
 
 	public int getHeuristic() {
 		return heuristic;
@@ -16,17 +33,12 @@ public class Grid implements Comparable {
 
 
 	public int getCost() {
-		return cost;
+		return pathCost;
 	}
 
 
 	public void setCost(int cost) {
-		this.cost = cost;
-	}
-
-	public Grid(int[][] grid, int score) {
-		this.grid = grid;
-		this.score = score;
+		this.pathCost = cost;
 	}
 
 	public int clusterScore() {
@@ -34,12 +46,12 @@ public class Grid implements Comparable {
 		boolean bool;
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 4; j++) {
-				if (grid[i][j] != 0) {
+				if (state[i][j] != 0) {
 
 					for (int k = 0; k < 4; k++) {
 						if (j != k) {
-							if (grid[i][j] == grid[i][k]) {
-								level += grid[i][j];
+							if (state[i][j] == state[i][k]) {
+								level += state[i][j];
 								break;
 							}
 						}
@@ -47,8 +59,8 @@ public class Grid implements Comparable {
 					
 					for (int k = 0; k < 4; k++) {
 						if (i != k) {
-							if (grid[i][j] == grid[k][i]) {
-								level += grid[i][j];
+							if (state[i][j] == state[k][i]) {
+								level += state[i][j];
 								break;
 							}
 						}
@@ -63,7 +75,7 @@ public class Grid implements Comparable {
 		int h = 0;
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 4; j++) {
-				if (grid[i][j] >= h)
+				if (state[i][j] >= h)
 					return h;
 			}
 		}
@@ -79,11 +91,11 @@ public class Grid implements Comparable {
 	}
 
 	public int[][] getGrid() {
-		return grid;
+		return state;
 	}
 
 	public void setGrid(int[][] grid) {
-		this.grid = grid;
+		this.state = grid;
 	}
 
 	@Override
@@ -92,7 +104,7 @@ public class Grid implements Comparable {
 		boolean same = true;
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 4; j++) {
-				if (temp.grid[i][j] != this.grid[i][j]) {
+				if (temp.state[i][j] != this.state[i][j]) {
 					same = false;
 					break;
 				}

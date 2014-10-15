@@ -27,7 +27,7 @@ public class twozerofoureight {
 				break;
 			}
 		}
-		return new Grid(grid, 0);
+		return new Grid(grid);
 	}
 	
 
@@ -146,7 +146,8 @@ public class twozerofoureight {
 			  for(int j=0; j<old[i].length; j++)
 			    old[i][j]=current[i][j];
 		
-		Grid newGrid = new Grid(old, oldGrid.getScore());
+		//Grid newGrid = new Grid(old, oldGrid.getScore());
+		Grid newGrid = new Grid(old, oldGrid.pathCost, oldGrid.depth + 1, oldGrid, 1, oldGrid.getScore());
 		int score = newGrid.getScore();
 		
 		int[][] old2 = new int [4][4];
@@ -198,6 +199,7 @@ public class twozerofoureight {
 		int[][] grid2 = AddNew(grid.clone());
 		newGrid.setGrid(grid2);
 		newGrid.setScore(score);
+		newGrid.setCost((newGrid.getScore() - oldGrid.getScore()));
 		return newGrid;
 	}
 
@@ -209,7 +211,8 @@ public class twozerofoureight {
 			  for(int j=0; j<old[i].length; j++)
 			    old[i][j]=current[i][j];
 		
-		Grid newGrid = new Grid(old, oldGrid.getScore());
+		//Grid newGrid = new Grid(old, oldGrid.getScore());
+		Grid newGrid = new Grid(old, oldGrid.pathCost, oldGrid.depth + 1, oldGrid, 2, oldGrid.getScore());
 		int score = newGrid.getScore();
 		
 		int[][] old2 = new int [4][4];
@@ -262,6 +265,7 @@ public class twozerofoureight {
 		grid = AddNew(grid);
 		newGrid.setGrid(grid);
 		newGrid.setScore(score);
+		newGrid.setCost((newGrid.getScore() - oldGrid.getScore()));
 		return newGrid;
 	}
 
@@ -273,7 +277,8 @@ public class twozerofoureight {
 			  for(int j=0; j<old[i].length; j++)
 			    old[i][j]=current[i][j];
 		
-		Grid newGrid = new Grid(old, oldGrid.getScore());
+		//Grid newGrid = new Grid(old, oldGrid.getScore());
+		Grid newGrid = new Grid(old, oldGrid.pathCost, oldGrid.depth + 1, oldGrid, 3, oldGrid.getScore());
 		int score = newGrid.getScore();
 		
 		int[][] old2 = new int [4][4];
@@ -326,7 +331,9 @@ public class twozerofoureight {
 		grid = AddNew(grid);
 		newGrid.setGrid(grid);
 		newGrid.setScore(score);
-		return newGrid;	}
+		newGrid.setCost((newGrid.getScore() - oldGrid.getScore()));
+		return newGrid;	
+	}
 
 	public Grid GoDown(Grid oldGrid) {
 		
@@ -336,7 +343,7 @@ public class twozerofoureight {
 			  for(int j=0; j<old[i].length; j++)
 			    old[i][j]=current[i][j];
 		
-		Grid newGrid = new Grid(old, oldGrid.getScore());
+		Grid newGrid = new Grid(old, oldGrid.pathCost, oldGrid.depth + 1, oldGrid, 4, oldGrid.getScore());
 		int score = newGrid.getScore();
 		
 		int[][] old2 = new int [4][4];
@@ -389,6 +396,7 @@ public class twozerofoureight {
 		grid = AddNew(grid);
 		newGrid.setGrid(grid);
 		newGrid.setScore(score);
+		newGrid.setCost((newGrid.getScore() - oldGrid.getScore()));
 		return newGrid;
 		//return new Grid(AddNew(grid), score);
 	}

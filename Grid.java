@@ -1,4 +1,5 @@
 public class Grid implements Comparable {
+	
 	private int[][] grid;
 	private int score;
 	private int cost = 0;
@@ -124,4 +125,5 @@ public class Grid implements Comparable {
 		game2.PrintGrid(g2);
 		System.out.println(g.compareTo(g2));
 	}
+
 }

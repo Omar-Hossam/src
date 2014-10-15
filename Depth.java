@@ -60,7 +60,7 @@ public class Depth {
 				}
 
 				if (!game.GameOver(temp)) {
-					//game.PrintGrid(temp);
+					game.PrintGrid(temp);
 					Grid gridleft = game.GoLeft(temp);
 					Grid gridup = game.GoUp(temp);
 					Grid griddown = game.GoDown(temp);
@@ -82,7 +82,7 @@ public class Depth {
 		// twozerofoureight game = new twozerofoureight();
 		// Grid temp = game.GenGrid();
 		// game.PrintGrid(game.GoRight(temp));
-		Depth depth = new Depth(2048*4);
+		Depth depth = new Depth(4096);
 		Grid winner = depth.completeTree();
 		depth.game.PrintGrid(winner);
 	}

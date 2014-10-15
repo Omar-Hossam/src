@@ -2,14 +2,14 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 
-public class AStar {
-	PriorityQueue queue = new PriorityQueue();
+public class Greedy {
+	PriorityQueue2 queue = new PriorityQueue2();
 	twozerofoureight game = new twozerofoureight();
 	ArrayList<Grid> visited = new ArrayList<Grid>();
 	int m;
 	int win;
 
-	public AStar(int m) {
+	public Greedy(int m) {
 		queue.add(game.GenGrid());
 		this.m = m;
 		win = m;

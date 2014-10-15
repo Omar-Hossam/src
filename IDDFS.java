@@ -16,7 +16,6 @@ public class IDDFS { // Ierative Deeping Depth First Search
 		root = game.GenGrid();
 		this.m = m;
 		win = m;
-		completeTree();
 	}
 
 	/*

@@ -10,7 +10,6 @@ public class Breadth {
 		queue.add(game.GenGrid());
 		this.m = m;
 		win = m;
-		completeTree();
 	}
 
 	public Grid completeTree() {

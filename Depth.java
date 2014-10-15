@@ -13,7 +13,6 @@ public class Depth {
 		stack.add(game.GenGrid());
 		this.m = m;
 		win = m;
-		completeTree();
 	}
 
 	/*

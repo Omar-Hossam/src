@@ -3,21 +3,27 @@ public class Grid implements Comparable {
 	private int score;
 	private int cost = 0;
 	private int heuristic = 0;
+	private int depth;
+
+	public int getDepth() {
+		return depth;
+	}
+
+	public void setDepth(int depth) {
+		this.depth = depth;
+	}
 
 	public int getHeuristic() {
 		return heuristic;
 	}
 
-
 	public void setHeuristic(int heuristic) {
 		this.heuristic = heuristic;
 	}
 
-
 	public int getCost() {
 		return cost;
 	}
-
 
 	public void setCost(int cost) {
 		this.cost = cost;
@@ -43,7 +49,7 @@ public class Grid implements Comparable {
 							}
 						}
 					}
-					
+
 					for (int k = 0; k < 4; k++) {
 						if (i != k) {
 							if (grid[i][j] == grid[k][i]) {

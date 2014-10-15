@@ -2,22 +2,24 @@ import java.util.Random;
 
 public class twozerofoureight extends GenericSearch {
 
-	public boolean win(Grid oldGrid, int win) {
-		int[][] x = oldGrid.getGrid();
+	// Checks if grid has reached the goal tile.
+	public boolean win(Grid grid, int win) {
+		int[][] x = grid.getGrid();
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 4; j++) {
-				if(x[i][j] == win)
+				if (x[i][j] == win)
 					return true;
 			}
 		}
 		return false;
 	}
 
+	// Generates very first Grid, randomly adding two 2s to the grid.
 	public Grid GenGrid() {
 		Random rand = new Random();
 		int n = rand.nextInt(4);
 		int n2 = rand.nextInt(4);
-		int [][] grid = new int [4][4];
+		int[][] grid = new int[4][4];
 		grid[n][n2] = 2;
 		while (true) {
 			int n3 = rand.nextInt(4);
@@ -29,56 +31,57 @@ public class twozerofoureight extends GenericSearch {
 		}
 		return new Grid(grid);
 	}
-	
 
-
+	// Checks if grid has reached a game over state. Meaning NO possible move
+	// would ever change the state of that grid.
 	public boolean GameOver(Grid oldGrid) {
-		int [][] grid = oldGrid.getGrid();
+		int[][] grid = oldGrid.getGrid();
 
 		if (!Zeros(grid)) {
 			return false;
 		}
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 4; j++) {
-				int left = j-1;
-				int right = j+1;
-				int up = i-1;
-				int down = i+1;
+				int left = j - 1;
+				int right = j + 1;
+				int up = i - 1;
+				int down = i + 1;
 
-				if(left >= 0){
-					if(grid[i][j] == grid[i][left])
+				if (left >= 0) {
+					if (grid[i][j] == grid[i][left])
 						return false;
 				}
-				if(right <= 3){
-					if(grid[i][j] == grid[i][right])
+				if (right <= 3) {
+					if (grid[i][j] == grid[i][right])
 						return false;
 				}
-				if(up >= 0){
-					if(grid[i][j] == grid[up][j])
+				if (up >= 0) {
+					if (grid[i][j] == grid[up][j])
 						return false;
 				}
-				if(down <= 3){
-					if(grid[i][j] == grid[down][j])
+				if (down <= 3) {
+					if (grid[i][j] == grid[down][j])
 						return false;
 				}
 			}
 		}
-		//System.out.println("Game Over");
 		return true;
 	}
-	public boolean Zeros(int [][]x){
+
+	// Checks if grid has no Zeros.
+	public boolean Zeros(int[][] x) {
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 4; j++) {
-				if(x[i][j] == 0)
+				if (x[i][j] == 0)
 					return false;
 			}
 		}
 		return true;
 	}
 
-
+	// Prints Grid.
 	public void PrintGrid(Grid oldGrid) {
-		int [][] grid = oldGrid.getGrid();
+		int[][] grid = oldGrid.getGrid();
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 4; j++) {
 				System.out.printf("%5d ", grid[i][j]);
@@ -88,6 +91,8 @@ public class twozerofoureight extends GenericSearch {
 		System.out.println(oldGrid.getScore());
 	}
 
+	// Adds a new 2 Tile to the grid. Used after each move. 2s can only be added
+	// to an empty corner, checking in a clockwise direction.
 	public int[][] AddNew(int[][] grid) {
 		int[][] grid2 = grid.clone();
 		if (grid2[0][0] == 0) {
@@ -102,60 +107,26 @@ public class twozerofoureight extends GenericSearch {
 
 		return grid2;
 	}
-
-//	public Grid move(String x, Grid oldGrid) {
-//		if (!GameOver(oldGrid)) {
-//			Grid newGrid, returnGrid;
-//			switch (x) {
-//			case "a":
-//				newGrid = GoLeft(oldGrid);
-//				returnGrid = AddNew(newGrid);
-//				PrintGrid(returnGrid);
-//				GameOver(returnGrid);
-//				return returnGrid;
-//			case "d":
-//				newGrid = GoRight(oldGrid);
-//				returnGrid = AddNew(newGrid);
-//				PrintGrid(returnGrid);
-//				GameOver(returnGrid);
-//				return returnGrid;
-//			case "w":
-//				newGrid = GoUp(oldGrid);
-//				returnGrid = AddNew(newGrid);
-//				PrintGrid(returnGrid);
-//				GameOver(returnGrid);
-//				return returnGrid;
-//			case "s":
-//				newGrid = GoDown(oldGrid);
-//				returnGrid = AddNew(newGrid);
-//				PrintGrid(returnGrid);
-//				GameOver(returnGrid);
-//				return returnGrid;
-//			}
-//		}
-//		return oldGrid;
-//
-//	}
 	
-	
+	//Plays a left move on the input grid. 
 	public Grid GoLeft(Grid oldGrid) {
-		
+
 		int[][] current = oldGrid.getGrid();
-		int[][] old = new int [4][4];
-		for(int i=0; i<old.length; i++)
-			  for(int j=0; j<old[i].length; j++)
-			    old[i][j]=current[i][j];
-		
-//		Grid newGrid = new Grid(old, oldGrid.getScore());
-		Grid newGrid = new Grid(old, oldGrid.pathCost, oldGrid.depth + 1, oldGrid, 1, oldGrid.getScore());
+		int[][] old = new int[4][4];
+		for (int i = 0; i < old.length; i++)
+			for (int j = 0; j < old[i].length; j++)
+				old[i][j] = current[i][j];
+
+		Grid newGrid = new Grid(old, oldGrid.pathCost, oldGrid.depth + 1,
+				oldGrid, 1, oldGrid.getScore());
 		int score = newGrid.getScore();
-		
-		int[][] old2 = new int [4][4];
-		for(int i=0; i<old2.length; i++)
-			  for(int j=0; j<old2[i].length; j++)
-			    old2[i][j]=current[i][j];
-		
-		int [][] grid = old2;
+
+		int[][] old2 = new int[4][4];
+		for (int i = 0; i < old2.length; i++)
+			for (int j = 0; j < old2[i].length; j++)
+				old2[i][j] = current[i][j];
+
+		int[][] grid = old2;
 		boolean possible = false;
 		for (int i = 0; i < 4; i++) {
 			int[] bool = { 0, 0, 0, 0 };
@@ -202,26 +173,26 @@ public class twozerofoureight extends GenericSearch {
 		newGrid.setCost((newGrid.getScore() - oldGrid.getScore()));
 		return newGrid;
 	}
-
+	
+	//Plays a right move on the input grid. 
 	public Grid GoRight(Grid oldGrid) {
 
 		int[][] current = oldGrid.getGrid();
-		int[][] old = new int [4][4];
-		for(int i=0; i<old.length; i++)
-			  for(int j=0; j<old[i].length; j++)
-			    old[i][j]=current[i][j];
-		
-//		Grid newGrid = new Grid(old, oldGrid.getScore());
-		Grid newGrid = new Grid(old, oldGrid.pathCost, oldGrid.depth + 1, oldGrid, 2, oldGrid.getScore());
+		int[][] old = new int[4][4];
+		for (int i = 0; i < old.length; i++)
+			for (int j = 0; j < old[i].length; j++)
+				old[i][j] = current[i][j];
+		Grid newGrid = new Grid(old, oldGrid.pathCost, oldGrid.depth + 1,
+				oldGrid, 2, oldGrid.getScore());
 		int score = newGrid.getScore();
-		
-		int[][] old2 = new int [4][4];
-		for(int i=0; i<old2.length; i++)
-			  for(int j=0; j<old2[i].length; j++)
-			    old2[i][j]=current[i][j];
-		
-		int [][] grid = old2;
-		
+
+		int[][] old2 = new int[4][4];
+		for (int i = 0; i < old2.length; i++)
+			for (int j = 0; j < old2[i].length; j++)
+				old2[i][j] = current[i][j];
+
+		int[][] grid = old2;
+
 		boolean possible = false;
 		for (int i = 0; i < 4; i++) {
 			int[] bool = { 0, 0, 0, 0 };
@@ -269,25 +240,25 @@ public class twozerofoureight extends GenericSearch {
 		return newGrid;
 	}
 
+	//Plays an up move on the input grid. 
 	public Grid GoUp(Grid oldGrid) {
-		
+
 		int[][] current = oldGrid.getGrid();
-		int[][] old = new int [4][4];
-		for(int i=0; i<old.length; i++)
-			  for(int j=0; j<old[i].length; j++)
-			    old[i][j]=current[i][j];
-		
-//		Grid newGrid = new Grid(old, oldGrid.getScore());
-		Grid newGrid = new Grid(old, oldGrid.pathCost, oldGrid.depth + 1, oldGrid, 3, oldGrid.getScore());
+		int[][] old = new int[4][4];
+		for (int i = 0; i < old.length; i++)
+			for (int j = 0; j < old[i].length; j++)
+				old[i][j] = current[i][j];
+		Grid newGrid = new Grid(old, oldGrid.pathCost, oldGrid.depth + 1,
+				oldGrid, 3, oldGrid.getScore());
 		int score = newGrid.getScore();
-		
-		int[][] old2 = new int [4][4];
-		for(int i=0; i<old2.length; i++)
-			  for(int j=0; j<old2[i].length; j++)
-			    old2[i][j]=current[i][j];
-		
-		int [][] grid = old2;
-		
+
+		int[][] old2 = new int[4][4];
+		for (int i = 0; i < old2.length; i++)
+			for (int j = 0; j < old2[i].length; j++)
+				old2[i][j] = current[i][j];
+
+		int[][] grid = old2;
+
 		boolean possible = false;
 		for (int i = 0; i < 4; i++) {
 			int[] bool = { 0, 0, 0, 0 };
@@ -332,27 +303,29 @@ public class twozerofoureight extends GenericSearch {
 		newGrid.setGrid(grid);
 		newGrid.setScore(score);
 		newGrid.setCost((newGrid.getScore() - oldGrid.getScore()));
-		return newGrid;	
+		return newGrid;
 	}
 
+	//Plays a down move on the input grid. 
 	public Grid GoDown(Grid oldGrid) {
-		
+
 		int[][] current = oldGrid.getGrid();
-		int[][] old = new int [4][4];
-		for(int i=0; i<old.length; i++)
-			  for(int j=0; j<old[i].length; j++)
-			    old[i][j]=current[i][j];
-		
-		Grid newGrid = new Grid(old, oldGrid.pathCost, oldGrid.depth + 1, oldGrid, 4, oldGrid.getScore());
+		int[][] old = new int[4][4];
+		for (int i = 0; i < old.length; i++)
+			for (int j = 0; j < old[i].length; j++)
+				old[i][j] = current[i][j];
+
+		Grid newGrid = new Grid(old, oldGrid.pathCost, oldGrid.depth + 1,
+				oldGrid, 4, oldGrid.getScore());
 		int score = newGrid.getScore();
-		
-		int[][] old2 = new int [4][4];
-		for(int i=0; i<old2.length; i++)
-			  for(int j=0; j<old2[i].length; j++)
-			    old2[i][j]=current[i][j];
-		
-		int [][] grid = old2;
-		
+
+		int[][] old2 = new int[4][4];
+		for (int i = 0; i < old2.length; i++)
+			for (int j = 0; j < old2[i].length; j++)
+				old2[i][j] = current[i][j];
+
+		int[][] grid = old2;
+
 		boolean possible = false;
 		for (int i = 0; i < 4; i++) {
 			int[] bool = { 0, 0, 0, 0 };
@@ -398,9 +371,6 @@ public class twozerofoureight extends GenericSearch {
 		newGrid.setScore(score);
 		newGrid.setCost((newGrid.getScore() - oldGrid.getScore()));
 		return newGrid;
-		//return new Grid(AddNew(grid), score);
 	}
-
-
 
 }

@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class twozerofoureight {
+public class twozerofoureight extends GenericSearch {
 
 	public boolean win(Grid oldGrid, int win) {
 		int[][] x = oldGrid.getGrid();
@@ -146,7 +146,7 @@ public class twozerofoureight {
 			  for(int j=0; j<old[i].length; j++)
 			    old[i][j]=current[i][j];
 		
-		//Grid newGrid = new Grid(old, oldGrid.getScore());
+//		Grid newGrid = new Grid(old, oldGrid.getScore());
 		Grid newGrid = new Grid(old, oldGrid.pathCost, oldGrid.depth + 1, oldGrid, 1, oldGrid.getScore());
 		int score = newGrid.getScore();
 		
@@ -211,7 +211,7 @@ public class twozerofoureight {
 			  for(int j=0; j<old[i].length; j++)
 			    old[i][j]=current[i][j];
 		
-		//Grid newGrid = new Grid(old, oldGrid.getScore());
+//		Grid newGrid = new Grid(old, oldGrid.getScore());
 		Grid newGrid = new Grid(old, oldGrid.pathCost, oldGrid.depth + 1, oldGrid, 2, oldGrid.getScore());
 		int score = newGrid.getScore();
 		
@@ -277,7 +277,7 @@ public class twozerofoureight {
 			  for(int j=0; j<old[i].length; j++)
 			    old[i][j]=current[i][j];
 		
-		//Grid newGrid = new Grid(old, oldGrid.getScore());
+//		Grid newGrid = new Grid(old, oldGrid.getScore());
 		Grid newGrid = new Grid(old, oldGrid.pathCost, oldGrid.depth + 1, oldGrid, 3, oldGrid.getScore());
 		int score = newGrid.getScore();
 		

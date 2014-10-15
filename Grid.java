@@ -1,5 +1,5 @@
 
-public class Grid implements Comparable {
+public class Grid implements Comparable  {
 	private int [][] grid;
 	private int score;
 

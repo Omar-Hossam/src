@@ -1,16 +1,8 @@
 public class Grid extends Node implements Comparable {
 	
-//	private int[][] grid;
 	private int score;
-//	private int cost = 0;
 	private int heuristic = 0;
-	
-//	public Node(int[][] state, int pathCost, int depth, Node parent, int operation) {
-//		this.pathCost = pathCost;
-//		this.depth = depth;
-//		this.parent = parent;
-//		this.operation = operation;
-//	}
+	//private int depth;
 	
 	public Grid(int[][] state, int pathCost, int depth, Node parent, int operation, int score) {
 		super(state, pathCost, depth, parent, operation);
@@ -21,21 +13,27 @@ public class Grid extends Node implements Comparable {
 		super(state);
 		this.score = 0;
 	}
+		
+
+	public int getDepth() {
+		return depth;
+	}
+
+	public void setDepth(int depth) {
+		this.depth = depth;
+	}
 
 	public int getHeuristic() {
 		return heuristic;
 	}
 
-
 	public void setHeuristic(int heuristic) {
 		this.heuristic = heuristic;
 	}
 
-
 	public int getCost() {
 		return pathCost;
 	}
-
 
 	public void setCost(int cost) {
 		this.pathCost = cost;
@@ -56,7 +54,7 @@ public class Grid extends Node implements Comparable {
 							}
 						}
 					}
-					
+
 					for (int k = 0; k < 4; k++) {
 						if (i != k) {
 							if (state[i][j] == state[k][i]) {

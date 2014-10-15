@@ -50,7 +50,8 @@ public class Depth {
 			for (int i = 0; i < old.length; i++)
 				for (int j = 0; j < old[i].length; j++)
 					old[i][j] = current[i][j];
-			temp = new Grid(old, stack.pop().getScore());
+			//temp = new Grid(old, stack.pop().getScore());
+			temp = new Grid(old, stack.peek().pathCost, stack.peek().depth, stack.peek(), 0, stack.pop().getScore());
 			
 			if (!checkVisited(temp)) {
 				visited.add(temp);

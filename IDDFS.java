@@ -134,9 +134,6 @@ public class IDDFS { // Ierative Deeping Depth First Search
 	}
 
 	public static void main(String[] args) {
-		// twozerofoureight game = new twozerofoureight();
-		// Grid temp = game.GenGrid();
-		// game.PrintGrid(game.GoRight(temp));
 		IDDFS depth = new IDDFS(32);
 		Grid winner = depth.completeTree();
 		depth.game.PrintGrid(winner);

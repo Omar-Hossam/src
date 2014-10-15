@@ -4,9 +4,7 @@ import java.util.LinkedList;
 public class PriorityQueue {
 	LinkedList<Grid> queue = new LinkedList<Grid>();
 
-	public PriorityQueue(LinkedList<Grid> queue) {
-		super();
-		this.queue = queue;
+	public PriorityQueue() {
 	}
 	
 	public void add(Grid grid) {
@@ -35,6 +33,10 @@ public class PriorityQueue {
 
 	public void setQueue(LinkedList<Grid> queue) {
 		this.queue = queue;
+	}
+
+	public boolean isEmpty() {
+		return queue.isEmpty();
 	}
 	
 }

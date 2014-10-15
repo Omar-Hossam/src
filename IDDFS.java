@@ -88,7 +88,7 @@ public class IDDFS {
 					}
 					if (!game.GameOver(temp)) {
 
-						
+
 
 						Grid gridleft = game.GoLeft(temp);
 						Grid gridup = game.GoUp(temp);
@@ -114,7 +114,7 @@ public class IDDFS {
 		// twozerofoureight game = new twozerofoureight();
 		// Grid temp = game.GenGrid();
 		// game.PrintGrid(game.GoRight(temp));
-		IDDFS depth = new IDDFS(8);
+		IDDFS depth = new IDDFS(32);
 		Grid winner = depth.completeTree();
 		depth.game.PrintGrid(winner);
 	}

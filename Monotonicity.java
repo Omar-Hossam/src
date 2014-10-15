@@ -96,24 +96,41 @@ public class Monotonicity {
 		return penalty;
 	}
 	
-//	public static void main(String[]s) {
-//		twozerofoureight game = new twozerofoureight();
-//		Grid grid = game.GenGrid();
-//		grid  = game.GoDown(grid);
-//		grid = game.GoLeft(grid);
-//		grid = game.GoDown(grid);
-//		grid = game.GoLeft(grid);
-//		grid = game.GoRight(grid);
-//		grid = game.GoDown(grid);
-//		grid = game.GoLeft(grid);
-//		grid = game.GoUp(grid);
-//		grid = game.GoDown(grid);
-//		grid = game.GoLeft(grid);
-//		grid = game.GoDown(grid);
-//		int penalty = Monotonicity.getHeuristicScore(grid);
-//		System.out.println(penalty);
-//		game.PrintGrid(grid);
-//	}
+	public static void main(String[]s) {
+		twozerofoureight game = new twozerofoureight();
+		Grid grid = game.GenGrid();
+		grid  = game.GoDown(grid);
+		grid = game.GoLeft(grid);
+		grid = game.GoDown(grid);
+		grid = game.GoLeft(grid);
+		grid = game.GoRight(grid);
+		grid = game.GoDown(grid);
+		grid = game.GoLeft(grid);
+		grid = game.GoUp(grid);
+		grid = game.GoDown(grid);
+		grid = game.GoLeft(grid);
+		grid = game.GoDown(grid);
+		grid  = game.GoDown(grid);
+		grid = game.GoRight(grid);
+		grid = game.GoLeft(grid);
+		
+		grid = game.GoDown(grid);
+		grid = game.GoRight(grid);
+		grid = game.GoLeft(grid);
+		grid = game.GoRight(grid);
+		grid = game.GoRight(grid);
+		grid = game.GoDown(grid);
+		grid = game.GoRight(grid);
+		grid = game.GoLeft(grid);
+		grid = game.GoUp(grid);
+		grid = game.GoDown(grid);
+		grid = game.GoRight(grid);
+		grid = game.GoLeft(grid);
+		grid = game.GoDown(grid);
+		int penalty = Monotonicity.getHeuristicScore(grid);
+		System.out.println(penalty);
+		game.PrintGrid(grid);
+	}
 }
 
 

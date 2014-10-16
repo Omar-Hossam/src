@@ -55,7 +55,7 @@ public class Search {
 	public void Visualize(Grid grid) {
 		Stack<Grid> stack = new Stack();
 		stack.push(grid);
-		while (grid.parent != null) {
+		while (stack.peek().parent != null) {
 			stack.push((Grid) stack.peek().parent);
 		}
 		while (!stack.empty()) {

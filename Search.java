@@ -9,24 +9,31 @@ public class Search {
 		case ("BF"):
 			Breadth breadth = new Breadth((int)Math.pow(2, m));
 			result = breadth.completeTree();
+			break;
 		case ("DF"):
-			Depth depth = new Depth(2048);
+			Depth depth = new Depth((int)Math.pow(2, m));
 			result = depth.completeTree();
+			break;
 		case ("ID"):
 			IDDFS iddfs = new IDDFS((int)Math.pow(2, m));
 			result = iddfs.completeTree();
+			break;
 		case ("GR1"):
 			Greedy greedy = new Greedy((int)Math.pow(2, m));
 			result = greedy.completeTree(1);
+			break;
 		case ("GR2"):
 			Greedy greedy2 = new Greedy((int)Math.pow(2, m));
 			result = greedy2.completeTree(2);
+			break;
 		case ("AS1"):
 			AStar astar = new AStar((int)Math.pow(2, m));
 			result = astar.completeTree(1);
+			break;
 		case ("AS2"):
 			AStar astar2 = new AStar((int)Math.pow(2, m));
 			result = astar2.completeTree(2);
+			break;
 		}
 		if (visualize) {
 			Visualize(result);
@@ -57,6 +64,6 @@ public class Search {
 	}
 
 	public static void main(String[] df) {
-		Search search = new Search(11, "DF", false);
+		Search search = new Search(12, "DF", true);
 	}
 }

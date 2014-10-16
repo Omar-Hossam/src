@@ -118,7 +118,7 @@ public class Breadth {
 	}
 
 	public static void main(String[] args) {
-		Breadth breadth = new Breadth(16);
+		Breadth breadth = new Breadth(32);
 		Grid winner = breadth.completeTree();
 		breadth.game.PrintGrid(winner);
 	}

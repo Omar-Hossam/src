@@ -96,8 +96,9 @@ public class IDDFS { // Ierative Deeping Depth First Search
 					old[i][j] = current[i][j];
 			temp = new Grid(old, stack.peek().pathCost, stack.peek().depth,
 					stack.peek().parent, stack.peek().operation, stack.pop().getScore());
-			game.PrintGrid(temp);
 
+			
+			
 			/*
 			 * If Grid hasn't reached the final level of deepness. It creates a
 			 * new level of edge grids, and pushes them to the stack.

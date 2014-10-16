@@ -56,7 +56,6 @@ public class AStar {
 					old[i][j]=current[i][j];
 			temp = new Grid(old, queue.peek().pathCost, queue.peek().depth, queue.peek().parent, queue.peek().getOperation(), queue.pop().getScore());
 
-			game.PrintGrid(temp);
 			//calculate heuristic for copy item
 			if (control == 1) {
 				temp.setHeuristic(Monotonicity.getHeuristicScore(temp));
@@ -141,16 +140,10 @@ public class AStar {
 					queue.add(griddown);
 				}
 			}
-			else {
-				//game.PrintGrid(temp);
-			}
 		}
 	}
 
 	public static void main(String[] args) {
-		//twozerofoureight game = new twozerofoureight();
-		//Grid temp = game.GenGrid();
-		//game.PrintGrid(game.GoRight(temp));
 		AStar breadth = new AStar(1024);
 		Grid winner = breadth.completeTree(1);
 		breadth.game.PrintGrid(winner);

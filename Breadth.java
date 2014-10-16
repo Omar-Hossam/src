@@ -82,14 +82,12 @@ public class Breadth {
 			temp4 = new Grid(old4, temp.pathCost, temp.depth, temp.parent,
 					temp.operation, temp.getScore());
 
-			game.PrintGrid(temp);
 			if (!checkVisited(temp)) {
 				visited.add(temp);
 				if (game.win(temp, win)) {
 					return temp;
 				}
 
-				game.PrintGrid(temp);
 
 				// If the current node did reach a game over state. It is
 				// allowed to

@@ -66,7 +66,6 @@ public class Depth {
 			 * disregards the branch and doesn't go back to it or expand it.
 			 */
 			if (!checkVisited(temp)) {
-				game.PrintGrid(temp);
 				visited.add(temp);
 
 				if (game.win(temp, win)) {
@@ -74,7 +73,6 @@ public class Depth {
 				}
 
 				if (!game.GameOver(temp)) {
-					//game.PrintGrid(temp);
 					Grid gridleft = game.GoLeft(temp);
 					Grid gridup = game.GoUp(temp);
 					Grid griddown = game.GoDown(temp);

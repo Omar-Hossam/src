@@ -55,7 +55,6 @@ public class Greedy {
 					old[i][j]=current[i][j];
 			temp = new Grid(old, queue.peek().pathCost, queue.peek().depth, queue.peek().parent, queue.peek().getOperation(), queue.pop().getScore());
 
-			game.PrintGrid(temp);
 			//calculate heuristic for copy item
 			if (control == 1) {
 				temp.setHeuristic(Monotonicity.getHeuristicScore(temp));
@@ -111,52 +110,34 @@ public class Greedy {
 					} else {
 						gridleft.setHeuristic(Smoothness.getHeuristicScore(gridleft));
 					}
-					//game.PrintGrid(gridleft);
 					Grid gridright = game.GoRight(temp2);
 					if (control == 1) {
 						gridright.setHeuristic(Monotonicity.getHeuristicScore(gridright));
 					} else {
 						gridright.setHeuristic(Smoothness.getHeuristicScore(gridright));
 					}
-					//game.PrintGrid(gridright);
 					Grid gridup = game.GoUp(temp3);
 					if (control == 1) {
 						gridup.setHeuristic(Monotonicity.getHeuristicScore(gridup));
 					} else {
 						gridup.setHeuristic(Smoothness.getHeuristicScore(gridup));
 					}
-					//game.PrintGrid(gridup);
 					Grid griddown = game.GoDown(temp4);
 					if (control == 1) {
 						griddown.setHeuristic(Monotonicity.getHeuristicScore(griddown));
 					} else {
 						griddown.setHeuristic(Smoothness.getHeuristicScore(griddown));
 					}
-					//game.PrintGrid(griddown);
-					//System.out.println(gridleft.compareTo(temp));
-					//System.out.println("11");
 					queue.add(gridleft);
-					//System.out.println(gridright.compareTo(temp2));
-					//System.out.println("22");
 					queue.add(gridright);
-					//System.out.println(gridup.compareTo(temp3));
-					//System.out.println("33");
 					queue.add(gridup);
-					//System.out.println(griddown.compareTo(temp4));
-					//System.out.println("44");
 					queue.add(griddown);
 				}
-			}
-			else {
-				//game.PrintGrid(temp);
 			}
 		}
 	}
 
 	public static void main(String[] args) {
-		//twozerofoureight game = new twozerofoureight();
-		//Grid temp = game.GenGrid();
-		//game.PrintGrid(game.GoRight(temp));
 		Greedy breadth = new Greedy(1024);
 		Grid winner = breadth.completeTree(2);
 		breadth.game.PrintGrid(winner);

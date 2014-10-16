@@ -7,6 +7,7 @@ public class PriorityQueue2 {
 	public PriorityQueue2() {
 	}
 	
+	// add node to priority queue based on heuristic score
 	public void add(Grid grid) {
 		int index  = 0;
 		for(int i = 0; i < queue.size(); i++) {
@@ -19,10 +20,12 @@ public class PriorityQueue2 {
 		queue.add(index, grid);
 	}
 	
+	//gets first element
 	public Grid peek() {
 		return queue.get(0);
 	}
 	
+	//gets and removes first element
 	public Grid pop() {
 		return queue.remove(0);
 	}

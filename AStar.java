@@ -15,6 +15,7 @@ public class AStar {
 		win = m;
 	}
 	
+	//same as in depth
 	public Boolean checkVisited(Grid grid) {
 		Boolean seen = false;
 		for (int i = 0; i < visited.size(); i++) {
@@ -36,7 +37,7 @@ public class AStar {
 	}
 
 
-	//1 for monotonicity 2 for smoothness
+	//control to use which heuristic 1 for monotonicity 2 for smoothness
 	public Grid completeTree(int control) {
 		Grid temp;
 		Grid temp2;
@@ -44,8 +45,10 @@ public class AStar {
 		Grid temp4;
 		while(true) {
 			if (queue.isEmpty()) {
+				// no solution all branches lead to game over
 				return null;
 			}
+			//make copies of top of queue
 			int[][] current = queue.peek().getGrid();
 			int[][] old = new int [4][4];
 			for(int i=0; i<old.length; i++)
@@ -54,7 +57,7 @@ public class AStar {
 			temp = new Grid(old, queue.peek().pathCost, queue.peek().depth, queue.peek(), 0, queue.pop().getScore());
 
 			game.PrintGrid(temp);
-
+			//calculate heuristic for copy item
 			if (control == 1) {
 				temp.setHeuristic(Monotonicity.getHeuristicScore(temp));
 			} else {
@@ -98,50 +101,43 @@ public class AStar {
 			}
 
 			if (game.win(temp, win)) {
+				// if we won return current node
 				return temp;
 			}
 			if (!checkVisited(temp)) {
+				// if we didnt visit node before add to array of visited nodes else dont add children to queue
 				visited.add(temp);
 				if (!game.GameOver(temp)) {
+					// if not game over
+					// generate children nodes and calculate heuristic score
 					Grid gridleft = game.GoLeft(temp);
 					if (control == 1) {
 						gridleft.setHeuristic(Monotonicity.getHeuristicScore(gridleft));
 					} else {
 						gridleft.setHeuristic(Smoothness.getHeuristicScore(gridleft));
 					}
-					//game.PrintGrid(gridleft);
 					Grid gridright = game.GoRight(temp2);
 					if (control == 1) {
 						gridright.setHeuristic(Monotonicity.getHeuristicScore(gridright));
 					} else {
 						gridright.setHeuristic(Smoothness.getHeuristicScore(gridright));
 					}
-					//game.PrintGrid(gridright);
 					Grid gridup = game.GoUp(temp3);
 					if (control == 1) {
 						gridup.setHeuristic(Monotonicity.getHeuristicScore(gridup));
 					} else {
 						gridup.setHeuristic(Smoothness.getHeuristicScore(gridup));
 					}
-					//game.PrintGrid(gridup);
 					Grid griddown = game.GoDown(temp4);
 					if (control == 1) {
 						griddown.setHeuristic(Monotonicity.getHeuristicScore(griddown));
 					} else {
 						griddown.setHeuristic(Smoothness.getHeuristicScore(griddown));
 					}
-					//game.PrintGrid(griddown);
-					//System.out.println(gridleft.compareTo(temp));
-					//System.out.println("11");
+					// add to priority queue
 					queue.add(gridleft);
-					//System.out.println(gridright.compareTo(temp2));
-					//System.out.println("22");
 					queue.add(gridright);
-					//System.out.println(gridup.compareTo(temp3));
-					//System.out.println("33");
 					queue.add(gridup);
-					//System.out.println(griddown.compareTo(temp4));
-					//System.out.println("44");
 					queue.add(griddown);
 				}
 			}

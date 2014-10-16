@@ -3,6 +3,8 @@ import java.util.LinkedList;
 
 
 public class Greedy {
+	// same exactly as astar but we use different type of priority queue when we insert into checks only heuristic 
+	//unlike priority queue for astar that checks sum of heuristic and cost
 	PriorityQueue2 queue = new PriorityQueue2();
 	twozerofoureight game = new twozerofoureight();
 	ArrayList<Grid> visited = new ArrayList<Grid>();

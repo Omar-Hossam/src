@@ -107,10 +107,11 @@ public class twozerofoureight extends GenericSearch {
 
 		return grid2;
 	}
-	
-	//Plays a left move on the input grid. 
+
+	// Plays a left move on the input grid.
 	public Grid GoLeft(Grid oldGrid) {
 
+		// This block creates a copy of the current node oldGrid.
 		int[][] current = oldGrid.getGrid();
 		int[][] old = new int[4][4];
 		for (int i = 0; i < old.length; i++)
@@ -126,6 +127,10 @@ public class twozerofoureight extends GenericSearch {
 			for (int j = 0; j < old2[i].length; j++)
 				old2[i][j] = current[i][j];
 
+		/*
+		 * Loops over grid adding adjacent tiles with same number together
+		 * accoreding to the direction.
+		 */
 		int[][] grid = old2;
 		boolean possible = false;
 		for (int i = 0; i < 4; i++) {
@@ -134,14 +139,17 @@ public class twozerofoureight extends GenericSearch {
 				if (grid[i][j] != 0) {
 					int n = j;
 					while (true) {
+						//ignores first tile.
 						if (n == 0) {
 							break;
 						}
-
+						
+						//ignores checked tiles.
 						if (bool[n - 1] == 1) {
 							break;
 						}
-
+						
+						//merges tiles
 						if (grid[i][n - 1] == grid[i][n]) {
 							grid[i][n - 1] = grid[i][n - 1] * 2;
 							score += grid[i][n - 1];
@@ -151,10 +159,12 @@ public class twozerofoureight extends GenericSearch {
 							break;
 						}
 
+						//ignores different tiles.
 						if (grid[i][n - 1] != grid[i][n] && grid[i][n - 1] != 0) {
 							break;
 						}
-
+						
+						//moves tile if next to a zero tile.
 						if (grid[i][n - 1] == 0) {
 							grid[i][n - 1] = grid[i][n];
 							grid[i][n] = 0;
@@ -165,6 +175,7 @@ public class twozerofoureight extends GenericSearch {
 				}
 			}
 		}
+		
 		if (!possible)
 			return oldGrid;
 		int[][] grid2 = AddNew(grid.clone());
@@ -173,8 +184,8 @@ public class twozerofoureight extends GenericSearch {
 		newGrid.setCost((newGrid.getScore() - oldGrid.getScore()));
 		return newGrid;
 	}
-	
-	//Plays a right move on the input grid. 
+
+	// Plays a right move on the input grid.
 	public Grid GoRight(Grid oldGrid) {
 
 		int[][] current = oldGrid.getGrid();
@@ -240,7 +251,7 @@ public class twozerofoureight extends GenericSearch {
 		return newGrid;
 	}
 
-	//Plays an up move on the input grid. 
+	// Plays an up move on the input grid.
 	public Grid GoUp(Grid oldGrid) {
 
 		int[][] current = oldGrid.getGrid();
@@ -306,7 +317,7 @@ public class twozerofoureight extends GenericSearch {
 		return newGrid;
 	}
 
-	//Plays a down move on the input grid. 
+	// Plays a down move on the input grid.
 	public Grid GoDown(Grid oldGrid) {
 
 		int[][] current = oldGrid.getGrid();

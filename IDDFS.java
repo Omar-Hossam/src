@@ -60,8 +60,8 @@ public class IDDFS { // Ierative Deeping Depth First Search
 				for (int i = 0; i < old.length; i++)
 					for (int j = 0; j < old[i].length; j++)
 						old[i][j] = current[i][j];
-				Grid newRoot = new Grid(old, root.pathCost, root.depth, root,
-						0, root.getScore());
+				Grid newRoot = new Grid(old, root.pathCost, root.depth, null,
+						0, 0);
 				stack.push(newRoot);
 				first_time = false;
 			}
@@ -83,8 +83,8 @@ public class IDDFS { // Ierative Deeping Depth First Search
 				for (int i = 0; i < old.length; i++)
 					for (int j = 0; j < old[i].length; j++)
 						old[i][j] = current[i][j];
-				Grid newRoot = new Grid(old, root.pathCost, root.depth, root,
-						0, root.getScore());
+				Grid newRoot = new Grid(old, root.pathCost, root.depth, null,
+						0, 0);
 				;
 				stack.push(newRoot);
 			}
@@ -95,7 +95,7 @@ public class IDDFS { // Ierative Deeping Depth First Search
 				for (int j = 0; j < old[i].length; j++)
 					old[i][j] = current[i][j];
 			temp = new Grid(old, stack.peek().pathCost, stack.peek().depth,
-					stack.peek(), 0, stack.pop().getScore());
+					stack.peek().parent, stack.peek().operation, stack.pop().getScore());
 			game.PrintGrid(temp);
 
 			/*
@@ -115,11 +115,6 @@ public class IDDFS { // Ierative Deeping Depth First Search
 						Grid griddown = game.GoDown(temp);
 						Grid gridright = game.GoRight(temp);
 
-						gridleft.setDepth(temp.getDepth() + 1);
-						gridup.setDepth(temp.getDepth() + 1);
-						griddown.setDepth(temp.getDepth() + 1);
-						gridright.setDepth(temp.getDepth() + 1);
-
 						stack.push(gridleft);
 						stack.push(gridup);
 						stack.push(griddown);
@@ -131,7 +126,7 @@ public class IDDFS { // Ierative Deeping Depth First Search
 	}
 
 	public static void main(String[] args) {
-		IDDFS depth = new IDDFS(32);
+		IDDFS depth = new IDDFS(8);
 		Grid winner = depth.completeTree();
 		depth.game.PrintGrid(winner);
 	}

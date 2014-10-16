@@ -59,7 +59,7 @@ public class Depth {
 				for (int j = 0; j < old[i].length; j++)
 					old[i][j] = current[i][j];
 			temp = new Grid(old, stack.peek().pathCost, stack.peek().depth,
-					stack.peek(), 0, stack.pop().getScore());
+					stack.peek().parent, stack.peek().operation, stack.pop().getScore());
 
 			/*
 			 * If node hasn't been visited before; the search creates for new

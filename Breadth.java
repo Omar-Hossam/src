@@ -29,7 +29,7 @@ public class Breadth {
 				for (int j = 0; j < old[i].length; j++)
 					old[i][j] = current[i][j];
 			temp = new Grid(old, queue.getFirst().pathCost,
-					queue.getFirst().depth, queue.getFirst(), 0, queue.pop()
+					queue.getFirst().depth, queue.getFirst().parent, queue.getFirst().getOperation(), queue.pop()
 							.getScore());
 
 			// Creates new Grid for right move.
@@ -37,7 +37,7 @@ public class Breadth {
 			for (int i = 0; i < old2.length; i++)
 				for (int j = 0; j < old2[i].length; j++)
 					old2[i][j] = current[i][j];
-			temp2 = new Grid(old2, temp.pathCost, temp.depth, temp, 0,
+			temp2 = new Grid(old2, temp.pathCost, temp.depth, temp.parent, temp.operation,
 					temp.getScore());
 
 			// Creates new Grid for up move.
@@ -45,7 +45,7 @@ public class Breadth {
 			for (int i = 0; i < old3.length; i++)
 				for (int j = 0; j < old3[i].length; j++)
 					old3[i][j] = current[i][j];
-			temp3 = new Grid(old3, temp.pathCost, temp.depth, temp, 0,
+			temp3 = new Grid(old3, temp.pathCost, temp.depth, temp.parent, temp.operation,
 					temp.getScore());
 
 			// Creates new Grid for down move.
@@ -53,7 +53,7 @@ public class Breadth {
 			for (int i = 0; i < old4.length; i++)
 				for (int j = 0; j < old4[i].length; j++)
 					old4[i][j] = current[i][j];
-			temp4 = new Grid(old4, temp.pathCost, temp.depth, temp, 0,
+			temp4 = new Grid(old4, temp.pathCost, temp.depth, temp.parent, temp.operation,
 					temp.getScore());
 
 			game.PrintGrid(temp);

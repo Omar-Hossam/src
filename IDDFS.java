@@ -12,8 +12,8 @@ public class IDDFS { // Ierative Deeping Depth First Search
 	int win;
 	int maxDepth = 0;
 
-	public IDDFS(int m) {
-		root = game.GenGrid();
+	public IDDFS(Grid root, int m) {
+		this.root = root;
 		this.m = m;
 		win = m;
 	}
@@ -124,11 +124,5 @@ public class IDDFS { // Ierative Deeping Depth First Search
 				}
 			}
 		}
-	}
-
-	public static void main(String[] args) {
-		IDDFS depth = new IDDFS(8);
-		Grid winner = depth.completeTree();
-		depth.game.PrintGrid(winner);
 	}
 }

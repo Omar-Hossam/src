@@ -1,37 +1,40 @@
+import java.util.Random;
 import java.util.Stack;
 
 public class Search {
 
 	private Grid result;
+	private Grid root;
 
-	public Search(int m, String strategy, Boolean visualize) {
+	public Search(Grid root, int m, String strategy, Boolean visualize) {
+		this.root = root;
 		switch (strategy) {
 		case ("BF"):
-			Breadth breadth = new Breadth((int) Math.pow(2, m));
+			Breadth breadth = new Breadth(root, (int) Math.pow(2, m));
 			result = breadth.completeTree();
 			break;
 		case ("DF"):
-			Depth depth = new Depth((int) Math.pow(2, m));
+			Depth depth = new Depth(root, (int) Math.pow(2, m));
 			result = depth.completeTree();
 			break;
 		case ("ID"):
-			IDDFS iddfs = new IDDFS((int) Math.pow(2, m));
+			IDDFS iddfs = new IDDFS(root, (int) Math.pow(2, m));
 			result = iddfs.completeTree();
 			break;
 		case ("GR1"):
-			Greedy greedy = new Greedy((int) Math.pow(2, m));
+			Greedy greedy = new Greedy(root, (int) Math.pow(2, m));
 			result = greedy.completeTree(1);
 			break;
 		case ("GR2"):
-			Greedy greedy2 = new Greedy((int) Math.pow(2, m));
+			Greedy greedy2 = new Greedy(root, (int) Math.pow(2, m));
 			result = greedy2.completeTree(2);
 			break;
 		case ("AS1"):
-			AStar astar = new AStar((int) Math.pow(2, m));
+			AStar astar = new AStar(root, (int) Math.pow(2, m));
 			result = astar.completeTree(1);
 			break;
 		case ("AS2"):
-			AStar astar2 = new AStar((int) Math.pow(2, m));
+			AStar astar2 = new AStar(root, (int) Math.pow(2, m));
 			result = astar2.completeTree(2);
 			break;
 		}
@@ -39,6 +42,23 @@ public class Search {
 			Visualize(result);
 		}
 
+	}
+	
+	public Grid GenGrid() {
+		Random rand = new Random();
+		int n = rand.nextInt(4);
+		int n2 = rand.nextInt(4);
+		int[][] grid = new int[4][4];
+		grid[n][n2] = 2;
+		while (true) {
+			int n3 = rand.nextInt(4);
+			int n4 = rand.nextInt(4);
+			if ((n != n3) || (n2 != n4)) {
+				grid[n3][n4] = 2;
+				break;
+			}
+		}
+		return new Grid(grid);
 	}
 
 	public void PrintGrid(Grid oldGrid) {
@@ -75,6 +95,7 @@ public class Search {
 	}
 
 	public static void main(String[] df) {
-		Search search = new Search(12, "DF", true);
+		twozerofoureight game = new twozerofoureight();
+		Search search = new Search(game.GenGrid(), 12, "DF", true);
 	}
 }

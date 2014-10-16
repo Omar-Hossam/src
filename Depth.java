@@ -8,8 +8,8 @@ public class Depth {
 	twozerofoureight game = new twozerofoureight();
 	int win;
 
-	public Depth(int m) {
-		stack.add(game.GenGrid());
+	public Depth(Grid root, int m) {
+		stack.add(root);
 		win = m;
 	}
 

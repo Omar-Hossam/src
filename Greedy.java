@@ -11,8 +11,8 @@ public class Greedy {
 	int m;
 	int win;
 
-	public Greedy(int m) {
-		queue.add(game.GenGrid());
+	public Greedy(Grid root, int m) {
+		queue.add(root);
 		this.m = m;
 		win = m;
 	}
@@ -135,11 +135,5 @@ public class Greedy {
 				}
 			}
 		}
-	}
-
-	public static void main(String[] args) {
-		Greedy breadth = new Greedy(1024);
-		Grid winner = breadth.completeTree(2);
-		breadth.game.PrintGrid(winner);
 	}
 }

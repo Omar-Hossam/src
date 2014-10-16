@@ -8,9 +8,11 @@ public class AStar {
 	ArrayList<Grid> visited = new ArrayList<Grid>();
 	int m;
 	int win;
+	Grid root;
 
-	public AStar(int m) {
-		queue.add(game.GenGrid());
+	public AStar(Grid root, int m) {
+		this.root = root;
+		queue.add(root);
 		this.m = m;
 		win = m;
 	}
@@ -141,11 +143,5 @@ public class AStar {
 				}
 			}
 		}
-	}
-
-	public static void main(String[] args) {
-		AStar breadth = new AStar(1024);
-		Grid winner = breadth.completeTree(1);
-		breadth.game.PrintGrid(winner);
 	}
 }

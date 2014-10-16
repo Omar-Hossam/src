@@ -8,8 +8,8 @@ public class Breadth {
 	int m;
 	int win;
 
-	public Breadth(int m) {
-		queue.add(game.GenGrid());
+	public Breadth(Grid root, int m) {
+		queue.add(root);
 		this.m = m;
 		win = m;
 	}
@@ -113,11 +113,5 @@ public class Breadth {
 				}
 			}
 		}
-	}
-
-	public static void main(String[] args) {
-		Breadth breadth = new Breadth(32);
-		Grid winner = breadth.completeTree();
-		breadth.game.PrintGrid(winner);
 	}
 }

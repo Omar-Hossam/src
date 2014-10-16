@@ -139,14 +139,17 @@ public class twozerofoureight extends GenericSearch {
 				if (grid[i][j] != 0) {
 					int n = j;
 					while (true) {
+						//ignores first tile.
 						if (n == 0) {
 							break;
 						}
-
+						
+						//ignores checked tiles.
 						if (bool[n - 1] == 1) {
 							break;
 						}
-
+						
+						//merges tiles
 						if (grid[i][n - 1] == grid[i][n]) {
 							grid[i][n - 1] = grid[i][n - 1] * 2;
 							score += grid[i][n - 1];
@@ -156,10 +159,12 @@ public class twozerofoureight extends GenericSearch {
 							break;
 						}
 
+						//ignores different tiles.
 						if (grid[i][n - 1] != grid[i][n] && grid[i][n - 1] != 0) {
 							break;
 						}
-
+						
+						//moves tile if next to a zero tile.
 						if (grid[i][n - 1] == 0) {
 							grid[i][n - 1] = grid[i][n];
 							grid[i][n] = 0;

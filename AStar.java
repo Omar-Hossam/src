@@ -54,7 +54,7 @@ public class AStar {
 			for(int i=0; i<old.length; i++)
 				for(int j=0; j<old[i].length; j++)
 					old[i][j]=current[i][j];
-			temp = new Grid(old, queue.peek().pathCost, queue.peek().depth, queue.peek(), 0, queue.pop().getScore());
+			temp = new Grid(old, queue.peek().pathCost, queue.peek().depth, queue.peek().parent, queue.peek().getOperation(), queue.pop().getScore());
 
 			game.PrintGrid(temp);
 			//calculate heuristic for copy item
@@ -68,7 +68,7 @@ public class AStar {
 			for(int i=0; i<old2.length; i++)
 				for(int j=0; j<old2[i].length; j++)
 					old2[i][j]=current[i][j];
-			temp2 = new Grid(old2, temp.pathCost, temp.depth, temp, 0, temp.getScore());
+			temp2 = new Grid(old2, temp.pathCost, temp.depth, temp.parent, temp.operation, temp.getScore());
 
 			if (control == 1) {
 				temp2.setHeuristic(Monotonicity.getHeuristicScore(temp2));
@@ -80,7 +80,7 @@ public class AStar {
 			for(int i=0; i<old3.length; i++)
 				for(int j=0; j<old3[i].length; j++)
 					old3[i][j]=current[i][j];
-			temp3 = new Grid(old3, temp.pathCost, temp.depth, temp, 0, temp.getScore());
+			temp3 = new Grid(old3, temp.pathCost, temp.depth, temp.parent, temp.operation, temp.getScore());
 
 			if (control == 1) {
 				temp3.setHeuristic(Monotonicity.getHeuristicScore(temp3));
@@ -92,7 +92,7 @@ public class AStar {
 			for(int i=0; i<old4.length; i++)
 				for(int j=0; j<old4[i].length; j++)
 					old4[i][j]=current[i][j];
-			temp4 = new Grid(old4, temp.pathCost, temp.depth, temp, 0, temp.getScore());
+			temp4 = new Grid(old4, temp.pathCost, temp.depth, temp.parent, temp.operation, temp.getScore());
 
 			if (control == 1) {
 				temp4.setHeuristic(Monotonicity.getHeuristicScore(temp4));

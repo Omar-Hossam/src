@@ -29,4 +29,44 @@ public abstract class Node {
 		this.operation = 0;
 	}
 
+	public int[][] getState() {
+		return state;
+	}
+
+	public void setState(int[][] state) {
+		this.state = state;
+	}
+
+	public int getPathCost() {
+		return pathCost;
+	}
+
+	public void setPathCost(int pathCost) {
+		this.pathCost = pathCost;
+	}
+
+	public Node getParent() {
+		return parent;
+	}
+
+	public void setParent(Node parent) {
+		this.parent = parent;
+	}
+
+	public int getDepth() {
+		return depth;
+	}
+
+	public void setDepth(int depth) {
+		this.depth = depth;
+	}
+
+	public int getOperation() {
+		return operation;
+	}
+
+	public void setOperation(int operation) {
+		this.operation = operation;
+	}
+
 }

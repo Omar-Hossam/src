@@ -156,7 +156,7 @@ public class AStar {
 		//Grid temp = game.GenGrid();
 		//game.PrintGrid(game.GoRight(temp));
 		AStar breadth = new AStar(1024);
-		Grid winner = breadth.completeTree(2);
+		Grid winner = breadth.completeTree(1);
 		breadth.game.PrintGrid(winner);
 	}
 }

@@ -155,7 +155,7 @@ public class Greedy {
 		//twozerofoureight game = new twozerofoureight();
 		//Grid temp = game.GenGrid();
 		//game.PrintGrid(game.GoRight(temp));
-		AStar breadth = new AStar(1024);
+		Greedy breadth = new Greedy(1024);
 		Grid winner = breadth.completeTree(2);
 		breadth.game.PrintGrid(winner);
 	}

@@ -7,25 +7,25 @@ public class Search {
 	public Search(int m, String strategy, Boolean visualize) {
 		switch (strategy) {
 		case ("BF"):
-			Breadth breadth = new Breadth(2 ^ m);
+			Breadth breadth = new Breadth((int)Math.pow(2, m));
 			result = breadth.completeTree();
 		case ("DF"):
 			Depth depth = new Depth(2048);
 			result = depth.completeTree();
 		case ("ID"):
-			IDDFS iddfs = new IDDFS(2 ^ m);
+			IDDFS iddfs = new IDDFS((int)Math.pow(2, m));
 			result = iddfs.completeTree();
 		case ("GR1"):
-			Greedy greedy = new Greedy(2 ^ m);
+			Greedy greedy = new Greedy((int)Math.pow(2, m));
 			result = greedy.completeTree(1);
 		case ("GR2"):
-			Greedy greedy2 = new Greedy(2 ^ m);
+			Greedy greedy2 = new Greedy((int)Math.pow(2, m));
 			result = greedy2.completeTree(2);
 		case ("AS1"):
-			AStar astar = new AStar(2 ^ m);
+			AStar astar = new AStar((int)Math.pow(2, m));
 			result = astar.completeTree(1);
 		case ("AS2"):
-			AStar astar2 = new AStar(2 ^ m);
+			AStar astar2 = new AStar((int)Math.pow(2, m));
 			result = astar2.completeTree(2);
 		}
 		if (visualize) {

@@ -6,12 +6,10 @@ public class Depth {
 	Stack<Grid> stack = new Stack<Grid>();
 	ArrayList<Grid> visited = new ArrayList<Grid>();
 	twozerofoureight game = new twozerofoureight();
-	int m;
 	int win;
 
 	public Depth(int m) {
 		stack.add(game.GenGrid());
-		this.m = m;
 		win = m;
 	}
 
@@ -59,7 +57,8 @@ public class Depth {
 				for (int j = 0; j < old[i].length; j++)
 					old[i][j] = current[i][j];
 			temp = new Grid(old, stack.peek().pathCost, stack.peek().depth,
-					stack.peek().parent, stack.peek().operation, stack.pop().getScore());
+					stack.peek().parent, stack.peek().operation, stack.pop()
+							.getScore());
 
 			/*
 			 * If node hasn't been visited before; the search creates for new
@@ -88,11 +87,5 @@ public class Depth {
 				}
 			}
 		}
-	}
-
-	public static void main(String[] args) {
-		Depth depth = new Depth(4096);
-		Grid winner = depth.completeTree();
-		depth.game.PrintGrid(winner);
 	}
 }
